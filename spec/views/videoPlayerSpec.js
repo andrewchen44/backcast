@@ -7,7 +7,8 @@ describe ('VideoPlayerView', function() {
     collection = new Videos(fakeVideoData);
     view = new VideoPlayerView({ collection: collection });
     view.template = _.template('<div class="video-player-details"><%= snippet.title %></div>');
-
+    
+    
     model = collection.at(0);
     model.select();
   });
@@ -17,7 +18,8 @@ describe ('VideoPlayerView', function() {
   });
 
   it('should render a video\'s content', function() {
-    expect(view.el).to.match(new RegExp(model.attributes.title));
+    console.log(view.el);
+    expect(view.el.innerHTML).to.match(new RegExp(model.attributes.title));
   });
 
   it('should re-render when an item is selected', function() {
